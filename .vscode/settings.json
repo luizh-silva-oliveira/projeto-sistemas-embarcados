@@ -15,5 +15,8 @@
     "idf.portWin": "COM4",
     "idf.pythonBinPathWin": "C:\\Users\\luiz.h.a.oliveira\\.espressif\\python_env\\idf5.2_py3.11_env\\Scripts\\python.exe",
     "idf.toolsPathWin": "C:\\Users\\luiz.h.a.oliveira\\.espressif",
-    "idf.flashType": "UART"
+    "idf.flashType": "UART",
+    "files.associations": {
+        "sensor_imu.h": "c"
+    }
 }
