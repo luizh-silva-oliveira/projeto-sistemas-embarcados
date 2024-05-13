@@ -13,7 +13,18 @@ get_acceleration_data(AccelerationData *data): Retorna os dados do acelerômetro
 get_gyroscope_data(GyroscopeData *data): Retorna os dados do giroscópio nos eixos x, y e z.
 ```
 
-//TODO biblioteca imu_tools
+Na biblioteca **imu_tools** temos as definições dos structs que guardam os dados do sensor, dos quaternions e ângulos de euler e também as seguintes funções:  
+
+```
+get_imu_data(IMUData *data): Captura os dados do acelerômetro e do giroscópio e guarda no struc IMUData passado como parâmetro.
+
+calculate_quaternion(const IMUData *data, Quaternion *quaternion): A partir dos dados guardados na estrutura IMUData vai calcular os quatro quaternions.
+
+quaternion_to_euler(const Quaternion *quaternion, EulerAngle *euler): A partir dos dados guardados na estrutura Quaternion vai calcular os três angulos de euler yaw, pitch e roll.
+
+get_quaternion(Quaternion *quaternion): Vai pegar o Quaternion calculado na função calculate_quaternion e gravar no quaternion passado como parâmetro.
+```
+
 
 # Diagrama de blocos
 ![diagrama de blocos](images/blocoMPU6050.drawio.png)  
