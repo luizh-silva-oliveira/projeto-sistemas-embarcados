@@ -44,7 +44,7 @@ esp_err_t calculate_quaternion(const IMUData *data, Quaternion *quaternion) {
     quaternion->z /= norm;
 
     //criando copia do quaternion para usar na função de get
-    //*calculatedQuaternion = *quaternion;
+    calculatedQuaternion = quaternion;
 
     return ESP_OK;
 }
@@ -62,13 +62,13 @@ esp_err_t quaternion_to_euler(const Quaternion *quaternion, EulerAngle *euler) {
     return ESP_OK;
 }
 
-// esp_err_t get_quaternion(Quaternion *quaternion) {
-//     if (calculatedQuaternion == NULL) return ESP_FAIL;
+esp_err_t get_quaternion(Quaternion *quaternion) {
+    if (calculatedQuaternion == NULL) return ESP_FAIL;
 
-//     quaternion->w = calculatedQuaternion->w;
-//     quaternion->x = calculatedQuaternion->x;
-//     quaternion->y = calculatedQuaternion->y;
-//     quaternion->z = calculatedQuaternion->z;
+    quaternion->w = calculatedQuaternion->w;
+    quaternion->x = calculatedQuaternion->x;
+    quaternion->y = calculatedQuaternion->y;
+    quaternion->z = calculatedQuaternion->z;
 
-//     return ESP_OK;
-// }
+    return ESP_OK;
+}
