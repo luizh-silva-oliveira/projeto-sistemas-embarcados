@@ -35,7 +35,7 @@ get_quaternion(Quaternion *quaternion): Vai pegar o Quaternion calculado na fun�
 **OBS: Caso sua placa ESP32 utilize outros pinos diferentes do 21 e 22 para o SDA e SCL é importante modificar na função i2c_bus_init dentro da biblioteca sensor_imu.c**
 
 # Máquina de estados
-
+![Maquina de Estados](images/state_machine.png)
 
 # Como rodar o projeto
 Faça o download da extensão abaixo no VSCode
