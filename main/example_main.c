@@ -32,11 +32,10 @@ void app_main() {
     for (int i = 0; i < quantStates; i++){
       switch(state) {
         case GET_IMU_DATA:
-          get_acceleration_data(&accelerationMeasures);
-          get_gyroscope_data(&gyroscopeMeasures);
-          get_imu_data(&gyroAcellMeasures);
-          state = CALCULATE_QUATERNIONS;
-
+          esp_err_t status = get_acceleration_data(&accelerationMeasures);
+          if (status == ESP_OK) status = get_gyroscope_data(&gyroscopeMeasures);
+          if (status == ESP_OK) status = get_imu_data(&gyroAcellMeasures);
+          if (status == ESP_OK) state = CALCULATE_QUATERNIONS;
           //Saída dos dados capturados
           ESP_LOGI(TAG_SENSOR_IMU, "acce_:%.2f, acce_y:%.2f, acce_z:%.2f", accelerationMeasures.x, accelerationMeasures.y, accelerationMeasures.z);
           ESP_LOGI(TAG_SENSOR_IMU, "gyro_x:%.2f, gyro_y:%.2f, gyro_z:%.2f\n", gyroscopeMeasures.x, gyroscopeMeasures.y, gyroscopeMeasures.z);
@@ -46,9 +45,9 @@ void app_main() {
           break;
 
         case CALCULATE_QUATERNIONS:
-          calculate_quaternion(&gyroAcellMeasures, &quaternion);
-          get_quaternion(&quaternionToGetTest);
-          state = CALCULATE_EULER_ANGLES;
+          status = calculate_quaternion(&gyroAcellMeasures, &quaternion);
+          if (status == ESP_OK) status = get_quaternion(&quaternionToGetTest);
+          if (status == ESP_OK) state = CALCULATE_EULER_ANGLES;
 
           //Saída dos dados capturados
           ESP_LOGI(TAG_IMU_TOOLS, "quat_w:%.2f, quat_x:%.2f, quat_y:%.2f, quat_z:%.2f", quaternion.w, quaternion.x, quaternion.y, quaternion.z);
@@ -56,8 +55,8 @@ void app_main() {
           break;
           
         case CALCULATE_EULER_ANGLES:
-          quaternion_to_euler(&quaternion, &eulerAngle);
-          state = GET_IMU_DATA;
+          status = quaternion_to_euler(&quaternion, &eulerAngle);
+          if (status == ESP_OK) state = GET_IMU_DATA;
 
           //Saída dos dados capturados
           ESP_LOGI(TAG_IMU_TOOLS, "pitch:%.2f, yaw:%.2f, roll:%.2f\n", eulerAngle.pitch, eulerAngle.yaw, eulerAngle.roll);
