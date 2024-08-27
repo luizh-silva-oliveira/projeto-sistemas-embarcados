@@ -36,7 +36,7 @@ get_quaternion(Quaternion *quaternion): Vai pegar o Quaternion calculado na fun√
 ![Arquitetura](images/tree.jpeg)
 
 # Diagrama de arquitetura
-![Arquitetura](images/Diagrama.jpeg)
+![Arquitetura](images/Diagrama.png)
 
 # Video Explicativo
 ***[Video Explicativo - Entrega 01 - Sistemas Embarcados [Youtube]](https://www.youtube.com/watch?v=z6EThjjiCBM)***
