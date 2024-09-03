@@ -38,8 +38,10 @@ get_quaternion(Quaternion *quaternion): Vai pegar o Quaternion calculado na fun�
 # Diagrama de arquitetura
 ![Arquitetura](images/Diagrama.png)
 
-# Video Explicativo
+# Videos Explicativos
 ***[Video Explicativo - Entrega 01 - Sistemas Embarcados [Youtube]](https://www.youtube.com/watch?v=z6EThjjiCBM)***
+
+***[Video Explicativo - Entrega 02 - Sistemas Embarcados [Youtube]](https://www.youtube.com/watch?v=dHcb04kcQVU)***
 
 **OBS: Caso sua placa ESP32 utilize outros pinos diferentes do 21 e 22 para o SDA e SCL é importante modificar na função i2c_bus_init dentro da biblioteca sensor_imu.c**
 
